@@ -14,7 +14,7 @@ interface Props {
 function MessageBox(props: Props) {
 	const { type, message } = props;
 	return (
-		<Stack spacing={2}>
+		<Stack spacing={2} justifySelf="center" p={2}>
 			{type === MSGBOX_TYPE_ERROR ? <ErrorIcon /> : null}
 			<Typography variant="h4">{message}</Typography>
 		</Stack>
