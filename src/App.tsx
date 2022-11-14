@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-// import ProductScreen from './screens/ImageScreen';
+import ImageScreen from './screens/ImageScreen';
 import HomeScreen from './screens/HomeScreen';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomeScreen />}>
             </Route>
-            {/* <Route path="/image/:imageID" component={ImageScreen} /> */}
+            <Route path="/image/:id" element={<ImageScreen />} />
           </Routes>
         </main>
         <Footer />
