@@ -4,8 +4,20 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Link, Badge } from '@mui/material';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectCart } from '../slices/cartSlice';
 
 export default function Header() {
+	const numItemsInCart = useSelector(selectCart).totalQty;
+	const navigate = useNavigate();
+
+	const handleCartClick = () => {
+		navigate('/cart');
+	};
+
 	return (
 		<header className="App-header">
 			<AppBar position="sticky" color="primary">
@@ -13,7 +25,20 @@ export default function Header() {
 					<IconButton edge="start" color="inherit" aria-label="menu">
 						<MenuIcon />
 					</IconButton>
-					<Typography variant="h6">Booru4Diffusion</Typography>
+					<Typography variant="h6" flexGrow={1}>
+						<Link
+							to="/"
+							component={RouterLink}
+							sx={{ textDecoration: 'none', color: 'text.primary' }}
+						>
+							Booru4Diffusion
+						</Link>
+					</Typography>
+					<IconButton edge="end" color="inherit" aria-label="cart" onClick={handleCartClick}>
+						<Badge badgeContent={numItemsInCart} color="secondary">
+							<ShoppingCartIcon />
+						</Badge>
+					</IconButton>
 				</Toolbar>
 			</AppBar>
 		</header>
