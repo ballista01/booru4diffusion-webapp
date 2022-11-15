@@ -26,7 +26,11 @@ function ImageScreen() {
 	}, [id]);
 
 	const checkOutHandler = () => {
-		navigate('/checkout');
+		let tagStr = "";
+		for (let i = 0; i < cart.cartItems.length; i++) {
+			tagStr = tagStr.concat(cart.cartItems[i].name).concat(' ');
+		}
+		navigate(`/checkout?tagStr=${tagStr}`);
 	};
 
 	return (

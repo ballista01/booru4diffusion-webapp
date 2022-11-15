@@ -6,6 +6,7 @@ import ImageScreen from './screens/ImageScreen';
 import HomeScreen from './screens/HomeScreen';
 import SigninScreen from './screens/SigninScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import TagCartScreen from './screens/TagCartScreen';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/image/:id" element={<ImageScreen />} />
             <Route path="/signin" element={<SigninScreen />} />
             <Route path="/register" element={<RegisterScreen />} />
+            <Route path="/cart" element={<TagCartScreen />} />
           </Routes>
         </main>
         <Footer />

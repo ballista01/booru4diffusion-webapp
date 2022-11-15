@@ -8,6 +8,10 @@ import { MSGBOX_TYPE_ERROR } from '../constants/messageBoxConstants';
 // import { useDispatch, useSelector } from 'react-redux';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { listImages, selectImageList } from '../slices/imageListSlice';
+import { useParams } from 'react-router';
+import { useSearchParams } from 'react-router-dom';
+import { findImagesByTagNames } from '../slices/imageListSlice';
+import { setTagQueryStr } from '../slices/imageListSlice';
 
 function HomeScreen() {
 	const imageList = useAppSelector(selectImageList);
@@ -15,7 +19,7 @@ function HomeScreen() {
 
 	useEffect(() => {
 		dispatch(listImages());
-	}, []);
+	}, [])
 	return (
 		<Box>
 			{imageList.loading ? (
