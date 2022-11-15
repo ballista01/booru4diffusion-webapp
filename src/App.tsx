@@ -4,17 +4,20 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ImageScreen from './screens/ImageScreen';
 import HomeScreen from './screens/HomeScreen';
+import SigninScreen from './screens/SigninScreen';
+import RegisterScreen from './screens/RegisterScreen';
 
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="App" style={{ marginTop: 50 }}>
         <Header />
         <main>
           <Routes>
-            <Route path="/" element={<HomeScreen />}>
-            </Route>
+            <Route path="/" element={<HomeScreen />} />
             <Route path="/image/:id" element={<ImageScreen />} />
+            <Route path="/signin" element={<SigninScreen />} />
+            <Route path="/register" element={<RegisterScreen />} />
           </Routes>
         </main>
         <Footer />
