@@ -13,7 +13,8 @@ interface Props {
 
 export default function ImageCard(props: Props) {
 	const { image } = props;
-	const tempImg = 'https://source.unsplash.com/random';
+	// const tempImg = 'https://source.unsplash.com/random';
+	const tempImg = `/api/images/file/${image.id}`;
 	return (
 		<Link to={`/image/${image.id}`} style={{ textDecoration: 'none' }}>
 			<Card key={image.id} className="card" sx={{ display: 'flex', flexDirection: 'column' }}>

@@ -6,6 +6,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 import type { AppDispatch } from '../store';
 import { useAppDispatch, useAppSelector } from '../hooks';
+import { selectUserSignin } from './userSigninSlice';
 
 export type ImageListState = {
   loading: boolean,
@@ -66,10 +67,13 @@ export const { imageListRequest, imageListFail, imageListSuccess, updateTagQuery
 //   }
 // }
 
-export const listImages = () => async(dispatch: AppDispatch) => {
+export const listImages = (token: string | undefined) => async(dispatch: AppDispatch) => {
   dispatch(imageListRequest);
   try {
-    const { data } = await axios.get('/api/images');
+    const { data } = (token != undefined && token != "") ?
+    await axios.get('/api/images', { 'headers': {'Authorization': `Bearer ${token}`}})
+    :
+    await axios.get('/api/images');
     dispatch(imageListSuccess(data));
   } catch (error: any) {
     dispatch(imageListFail(error.message));

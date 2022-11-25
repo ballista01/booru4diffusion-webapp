@@ -12,13 +12,16 @@ import { useParams } from 'react-router';
 import { useSearchParams } from 'react-router-dom';
 import { findImagesByTagNames } from '../slices/imageListSlice';
 import { setTagQueryStr } from '../slices/imageListSlice';
+import { selectUserSignin } from '../slices/userSigninSlice';
 
 function HomeScreen() {
 	const imageList = useAppSelector(selectImageList);
 	const dispatch = useAppDispatch();
+	const userSignin = useAppSelector(selectUserSignin);
+	const token = userSignin.userInfo?.accessToken;
 
 	useEffect(() => {
-		dispatch(listImages());
+		dispatch(listImages(token));
 	}, [])
 	return (
 		<Box>

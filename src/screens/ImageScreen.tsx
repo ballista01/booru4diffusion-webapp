@@ -71,7 +71,7 @@ function ImageScreen() {
 						</Grid>
 						<Grid item lg={8} xs={12} sx={{ width: '100%' }}>
 							<img
-								src="https://source.unsplash.com/random"
+								src={`/api/images/file/${id}`}
 								alt={imageDetail.image?.title}
 								style={{ maxHeight: '100%', maxWidth: '100%' }}
 							/>
